@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: <your-registry>/my-frontend:latest (or `my-frontend:latest`)
+        ports:
+        - containerPort: 5173
+        env:
+        - name: VITE_API_URL
+          value: "http://backend-service:8000" (Kubernetes Service name)
+        - name: VITE_BASE_URL
+          value: "http://localhost:8000" (review if this needs adjustment in a Kubernetes setup)
+        - name: NODE_ENV
+          value: "deploy"
