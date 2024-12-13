@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: <your-registry>/my-frontend:latest (or `my-frontend:latest`)
+        image: vidhuarora/my-frontend:latest (or `my-frontend:latest`)
         ports:
         - containerPort: 5173
         env:
         - name: VITE_API_URL
-          value: "http://backend-service:8000" (Kubernetes Service name)
+          value: "http://backend-service:8000"
         - name: VITE_BASE_URL
-          value: "http://localhost:8000" (review if this needs adjustment in a Kubernetes setup)
+          value: "http://localhost:8000" 
         - name: NODE_ENV
           value: "deploy"
